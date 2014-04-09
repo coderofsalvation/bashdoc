@@ -1,0 +1,43 @@
+#!/bin/bash 
+#
+# deadsimple shellscript for building applications + docs (using githooks)
+#
+
+SELF_PATH="$(dirname $(readlink -f "$0"))/../"
+cd "$SELF_PATH"
+
+docs(){
+  cd $SELF_PATH;
+  mds=( doc/*.md );
+  NOTEMPLATE=1 renderdoc "doc/menu.md" "doc/menu.html"
+  for md in "${mds[@]}"; do 
+    [[ "$md" =~ "menu.md" ]] && continue;
+    output="${md//\.*/}"
+    renderdoc "$md" "$output.html"
+  done
+}
+
+renderdoc(){
+  input="$1"; output="$2";
+  echo "bashing down $input"
+  [[ -f "$output" ]] && : > "$output"
+  [[ ! -n $NOTEMPLATE ]] && cat doc/header.html | cli/bashdown > "$output"
+  cat "$input" | cli/bashdown | cli/markdown | _codefix >> "$output"; 
+  [[ ! -n $NOTEMPLATE ]] && cat doc/footer.html | cli/bashdown >> "$output"
+}
+
+_codefix(){
+  cat - | awk -vRS="<code>\n" -vORS="<code>" '1'
+}
+
+_usage(){
+  grep "^[^_].\+(){$" $0 | while read line; do
+    local cmd=$(echo "$line" | sed "s/(){//g")
+    local info=$(grep -C0 -A0 -B1 "$cmd(){" $0 | sed "N;s/\n.*//g" )
+    printf "    $0 %-20s %-40s\n" "$cmd" "$info" | grep "#"
+  done; echo "";
+}
+
+[[ ! -n "$1" ]] && _usage || "$@"
+
+# vim: set foldingmethod=marker

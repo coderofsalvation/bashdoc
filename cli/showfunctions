@@ -1,0 +1,29 @@
+#!/bin/bash
+SELF_PATH="$(dirname $(readlink -f "$0") )"
+cd "$SELF_PATH""/../"
+
+trim(){
+    cat - | sed -e 's/^ *//g' -e 's/ *$//g'
+}
+ 
+extract_functions(){  
+  grep -E "(public |protected )" "$file" | while read line; do 
+    line="${line//{/}"; echo "    $( echo "$line" | trim)"
+  done
+}
+
+extract_metadata(){  
+  class="$(grep "^class .*{" "$1")"; class="${class/{/}"
+  [[ ${#class} > 0 ]] && printf "$class\n\n"
+}
+
+find . -type f -name "*\.php" | grep -vE "(/doc/|/test/)" | while read file; do
+  file="${file:2:${#file}-1}"
+  functions="$(extract_functions)"
+  [[ ${#functions} > 0 ]] && {
+    printf "### $file\n\n"
+    extract_metadata "$file"
+    echo "$functions"; echo "";
+  };
+done
+

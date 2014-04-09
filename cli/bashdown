@@ -1,0 +1,16 @@
+#!/bin/bash 
+#
+# Simple powerfull bash template engine (aka macgyver-style smarty) 
+#
+
+SELF_PATH="$(dirname $(readlink -f "$0"))"
+. "$SELF_PATH/../doc/config.bash"
+
+cat - | sed 's/`/*/g' | {
+  IFS=''; cat - | while read line; do 
+    [[ -n $DEBUG ]] && echo ">>> $line" 1>&2
+    #if [[ ! "$line" =~ '    ' ]]; then line="$(eval "echo -e \"$( echo "$line" | sed 's/"/\\"/g')\"")"; fi # process bash in snippet
+    line="$(eval "echo -e \"$( echo "$line" | sed 's/"/\\"/g')\"")"; 
+    echo "$line"
+  done
+}
