@@ -18,6 +18,13 @@ Now browse to /doc and voila!
 
 ### Screenshots
 
+<img alt="screenshot of index view" src="https://raw.githubusercontent.com/coderofsalvation/bashdoc/master/examplecode/screenshot1.png"/>
+
+<img alt="screenshot of index view" src="https://raw.githubusercontent.com/coderofsalvation/bashdoc/master/examplecode/screenshot2.png"/>
+
+<img alt="screenshot of index view" src="https://raw.githubusercontent.com/coderofsalvation/bashdoc/master/examplecode/screenshot3.png"/>
+
+
 ### Why
 
 To easily drop-in a doc-chain into your projects which is:
