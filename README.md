@@ -26,6 +26,7 @@ Now browse to /doc and voila!
 
 <img alt="screenshot of index view" src="https://raw.githubusercontent.com/coderofsalvation/bashdoc/master/examplecode/screenshot3.png"/>
 
+<img alt="screenshot of index view" src="https://raw.githubusercontent.com/coderofsalvation/bashdoc/master/examplecode/screenshot4.png"/>
 
 ### Why
 
@@ -40,3 +41,10 @@ To easily drop-in a doc-chain into your projects which is:
 I know there are fancy other packages, but sometimes I need the bare minimum.
 
 The example scans all php files from the root, but with a bit of bashfu you can tailor it to your own needs.
+
+### Credits
+
+* [bashdown](https://github.com/coderofsalvation/bashdown)
+* [markdown.bash](https://github.com/chadbraunduin/markdown.bash)
+* GNU coreutils
+* GNU bash
