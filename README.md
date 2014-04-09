@@ -1,7 +1,9 @@
 bashdoc
 =======
 
-simple portable documentation generator from sourcecode comments using simply bash &amp; markdown
+simple portable documentation generator for sourcecode using simply bash &amp; markdown.
+
+Need a simple doc-chain without fancyness?
 
 ### Installation
 
