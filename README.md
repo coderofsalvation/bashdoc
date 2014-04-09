@@ -36,3 +36,5 @@ To easily drop-in a doc-chain into your projects which is:
 * easy to trigger from githooks (on deployment e.g.)
 
 I know there are fancy other packages, but sometimes I need the bare minimum.
+
+The example scans all php files from the root, but with a bit of bashfu you can tailor it to your own needs.
