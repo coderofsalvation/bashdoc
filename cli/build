@@ -39,5 +39,3 @@ _usage(){
 }
 
 [[ ! -n "$1" ]] && _usage || "$@"
-
-# vim: set foldingmethod=marker
