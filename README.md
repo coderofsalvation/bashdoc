@@ -28,6 +28,8 @@ Now browse to /doc and voila!
 
 <img alt="screenshot of index view" src="https://raw.githubusercontent.com/coderofsalvation/bashdoc/master/examplecode/screenshot4.png"/>
 
+<img alt="screenshot of index view" src="https://raw.githubusercontent.com/coderofsalvation/bashdoc/master/examplecode/screenshot5.png"/>
+
 ### Why
 
 To easily drop-in a doc-chain into your projects which is:
