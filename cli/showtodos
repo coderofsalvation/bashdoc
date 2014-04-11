@@ -1,0 +1,24 @@
+#!/bin/bash
+# basic code scanner for todos 
+
+keywordRegex="(\*FIXME\*|\*TODO\*)"
+
+echo -e "=> scanning sourcecode for unfinished business (*FIXME* and *TODO* in comments)...please wait\n"
+
+scan(){ 
+  grep --include *.php -RHn -E "$keywordRegex" . | while read line; do printline "$line"; done
+} 
+
+printline(){
+  loc="${1/:*/}"; loc="${loc//\..\/.}"; desc="${1/*: /}"; desc="$( echo "$desc" | trim )"
+  line="$(printf "%-40s %s\n" "$loc" "$desc")"
+  echo "${line:0:160}"
+} 
+
+trim(){   
+  cat - | sed -e 's/^ *//g' -e 's/ *$//g'  
+} 
+
+scan  
+exit 0
+
