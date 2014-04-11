@@ -35,6 +35,7 @@ To easily drop-in a doc-chain into your projects which is:
 * portable
 * deadsimple
 * easy to extend 
+* for any language, just fiddle with the regexes for other languages
 * use inline bash in markdown (templating language)
 * easy to trigger from githooks (on deployment e.g.)
 
